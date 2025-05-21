@@ -1,7 +1,7 @@
 // src/components/Sidebar.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, BookOpen, Map, Info, Home } from "lucide-react";
+import { Menu, BookOpen, Map, Info, Home, ThumbsUp } from "lucide-react";
 
 export default function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ export default function Sidebar({ children }) {
               <SidebarLink to="/contents" icon={<BookOpen className="w-5 h-5" />} label="Table of Contents" />
               <SidebarLink to="/overview" icon={<Info className="w-5 h-5" />} label="Overview" />
               <SidebarLink to="/map" icon={<Map className="w-5 h-5" />} label="Map" />
-              <SidebarLink to="/acknowledgements" icon={<Info className="w-5 h-5" />} label="Acknowledgements" />
+              <SidebarLink to="/acknowledgements" icon={<ThumbsUp className="w-5 h-5" />} label="Acknowledgements" />
             </div>
           )}
         </div>
