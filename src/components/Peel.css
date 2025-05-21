@@ -1,0 +1,48 @@
+/* src/components/Peel.css */
+
+.cover-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cover {
+  /* fill container */
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem; /* match Tailwind rounded-lg */
+  overflow: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cover.peel {
+  animation: peel-away 1s ease-in-out forwards;
+  pointer-events: none; /* disable clicks during animation */
+}
+
+@keyframes peel-away {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-90deg);
+  }
+}
+
+/* Table of contents overlay */
+.toc-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  pointer-events: none; /* disable clicks when invisible */
+}
+
+.toc-overlay.opacity-100 {
+  opacity: 1;
+  pointer-events: auto; /* enable clicks when visible */
+}
