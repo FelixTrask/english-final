@@ -1,19 +1,28 @@
-import './index.css';
-import React from "react";
+// App.js
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TitlePage from "./components/TitlePage";
+import TableOfContents from "./components/TableOfContents";
+import Introduction from "./pages/Introduction";
+import MapPage from "./pages/MapPage";
+import Chapters from "./pages/Chapters";
+import Acknowledgements from "./pages/Acknowledgements";
+import CreativePiece from "./pages/CreativePiece";
+import BackCover from "./pages/BackCover";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white shadow-xl rounded-2xl p-8 max-w-md w-full text-center">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
-        <p className="text-gray-600 mb-6">
-          This is a TailwindCSS + React boilerplate. Get started by editing <code>App.js</code>.
-        </p>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-          Click Me
-        </button>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<TitlePage />} />
+        <Route path="/contents" element={<TableOfContents />} />
+        <Route path="/intro" element={<Introduction />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="/chapters" element={<Chapters />} />
+        <Route path="/creative" element={<CreativePiece />} />
+        <Route path="/acknowledgements" element={<Acknowledgements />} />
+        <Route path="/back-cover" element={<BackCover />} />
+      </Routes>
+    </Router>
   );
 }
 
