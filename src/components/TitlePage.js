@@ -32,7 +32,7 @@ export default function TitlePage() {
           style={{ transformOrigin: "left center" }}
           onAnimationEnd={handleAnimationEnd}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-200 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-gray-900" />
           <div className="relative z-10 flex flex-col items-center justify-center h-full px-12 py-16">
             <h1 className="text-4xl font-bold mb-2 text-center">
               A Journey Through Bits and Bytes
