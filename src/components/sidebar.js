@@ -1,7 +1,7 @@
 // src/components/Sidebar.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, BookOpen, Map, Info, Home, ThumbsUp } from "lucide-react";
+import { Menu, BookOpen, Map, Info, Home, Pencil } from "lucide-react";
 
 export default function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +23,9 @@ export default function Sidebar({ children }) {
             <div className="absolute top-12 left-0 bg-white rounded-xl shadow-lg w-56 p-3 flex flex-col gap-2 text-gray-800 animate-fade-in animate-fade-out">
               <SidebarLink to="/" icon={<Home className="w-5 h-5" />} label="Home" />
               <SidebarLink to="/contents" icon={<BookOpen className="w-5 h-5" />} label="Table of Contents" />
-              <SidebarLink to="/overview" icon={<Info className="w-5 h-5" />} label="Overview" />
+              <SidebarLink to="/creative" icon={<Pencil className="w-5 h-5" />} label="Creative Piece" />
               <SidebarLink to="/map" icon={<Map className="w-5 h-5" />} label="Map" />
-              <SidebarLink to="/acknowledgements" icon={<ThumbsUp className="w-5 h-5" />} label="Acknowledgements" />
+              <SidebarLink to="/acknowledgements" icon={<Info className="w-5 h-5" />} label="Acknowledgements" />
             </div>
           )}
         </div>
