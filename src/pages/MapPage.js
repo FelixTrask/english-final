@@ -1,48 +1,89 @@
+// pages/MapPage.js
 import React, { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
-function MapPage() {
+export default function MapPage() {
   const container = useRef();
 
-  useGSAP(() => {
-    // Fade in the whole background container
-    gsap.fromTo(
-      container.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1, ease: "power2.out" }
-    );
+  useGSAP(
+    () => {
+      gsap.utils.toArray(".timeline-entry").forEach((entry, i) => {
+        gsap.fromTo(
+          entry,
+          { opacity: 0, y: 80 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: i * 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: entry,
+              start: "top 85%",
+            },
+          }
+        );
+      });
+    },
+    { scope: container }
+  );
 
-    // Animate text
-    gsap.fromTo(
-      ".main-title",
-      { y: -40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
-    );
+  const rawPoints = [
+    "Arrived at EHS with nerves and curiosity, unsure of what the year would bring.",
+    "Went on Burch; when I came back, I felt almost at home.",
+    "Got to know my roommate, friends, and teachers more.",
+    "Stopped feeling homesick, and started hanging out + having lots of fun.",
+    "Got onto the climbing team, looking forward to every single practice with my team.",
+    "Went on winter break, I was excited to come back to Episcopal.",
+    "Had lots of fun on the Ultimate team, making lots of new friends.",
+    "Finally felt like I found my place at Episcopal, with the support of everyone around me.",
+    "Crafted this final book, looking back with EHS as my new home.",
+  ];
 
-    gsap.fromTo(
-      ".text",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: "power3.out" }
-    );
-  }, { scope: container });
+  // Use only the first 5 entries
+  const points = rawPoints.slice(0, 9);
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-pink-100 to-white pt-12"
       ref={container}
+      className="min-h-screen bg-gradient-to-br from-blue-50 to-white pt-16 pb-40 px-6"
     >
-      <div className="bg-white rounded-xl shadow-xl px-10 py-5 max-w-3xl mx-auto text-container text-pretty">
-        <h1 className="text-3xl font-bold mb-4 main-title">Map Page</h1>
-        <hr className="h-px my-5 bg-gray-300 border-0" />
-        <p className="text-gray-700 text">
-          example text
-        </p>
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-16 text-blue-800">
+          How Episcopal Became my New Home
+        </h1>
+
+        <div className="relative border-l-4 border-blue-300 pl-8 space-y-32">
+          {points.map((text, idx) => (
+            <div
+              key={idx}
+              className="timeline-entry relative flex items-start"
+            >
+              {/* Dot with embedded SVG icon */}
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 bg-blue-500 rounded-full border-4 border-white shadow-md flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 2a8 8 0 018 8 8 8 0 11-8-8z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Text bubble */}
+              <div className="ml-6 bg-white p-6 rounded-lg shadow-lg flex-1">
+                <p className="text-gray-700 leading-relaxed">{text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
-export default MapPage;
