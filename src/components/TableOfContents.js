@@ -62,7 +62,7 @@ function TableOfContents() {
               to="/intro"
               className="toc-link text-blue-700 hover:underline hover:text-xl hover:text-blue-900 transition duration-300"
             >
-              ➤ Introduction
+              ➤ Preface
             </Link>
           </li>
           <li>

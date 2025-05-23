@@ -11,12 +11,14 @@ import Chapters from "./pages/Chapters";
 import Acknowledgements from "./pages/Acknowledgements";
 import CreativePiece from "./pages/CreativePiece";
 import BackCover from "./pages/BackCover";
+import GSAPtest from "./pages/GSAPtest";
 
 function App() {
   return (
     <Router>
       <Sidebar>
         <Routes>
+          <Route path="/test" element={<GSAPtest />} />
           <Route path="/" element={<TitlePage />} />
           <Route path="/contents" element={<TableOfContents />} />
           <Route path="/intro" element={<Introduction />} />

@@ -35,7 +35,7 @@ function Introduction() {
       ref={container}
     >
       <div className="bg-white rounded-xl shadow-xl px-10 py-5 max-w-3xl mx-auto text-container text-pretty">
-        <h1 className="text-3xl font-bold mb-4 main-title">Preface / Introduction</h1>
+        <h1 className="text-3xl font-bold mb-4 main-title">Preface</h1>
         <hr className="h-px my-5 bg-gray-300 border-0" />
         <p className="text-gray-700 text">
           example text
