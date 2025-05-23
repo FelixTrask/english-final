@@ -23,7 +23,7 @@ export default function Sidebar({ children }) {
             <div className="absolute top-12 left-0 bg-white rounded-xl shadow-lg w-56 p-3 flex flex-col gap-2 text-gray-800 animate-fade-in animate-fade-out">
               <SidebarLink to="/" icon={<Home className="w-5 h-5" />} label="Home" />
               <SidebarLink to="/contents" icon={<BookOpen className="w-5 h-5" />} label="Table of Contents" />
-              <SidebarLink to="/creative" icon={<Pencil className="w-5 h-5" />} label="Creative Piece" />
+              <SidebarLink to="/chapters" icon={<Pencil className="w-5 h-5" />} label="Chapters" />
               <SidebarLink to="/map" icon={<Map className="w-5 h-5" />} label="Map" />
               <SidebarLink to="/acknowledgements" icon={<Info className="w-5 h-5" />} label="Acknowledgements" />
             </div>
