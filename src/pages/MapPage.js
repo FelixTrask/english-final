@@ -33,15 +33,15 @@ export default function MapPage() {
   );
 
   const rawPoints = [
-    "Arrived at EHS with nerves and curiosity, unsure of what the year would bring.",
-    "Went on Burch; when I came back, I felt almost at home.",
-    "Got to know my roommate, friends, and teachers more.",
-    "Stopped feeling homesick, and started hanging out + having lots of fun.",
-    "Got onto the climbing team, looking forward to every single practice with my team.",
-    "Went on winter break, I was excited to come back to Episcopal.",
-    "Had lots of fun on the Ultimate team, making lots of new friends.",
-    "Finally felt like I found my place at Episcopal, with the support of everyone around me.",
-    "Crafted this final book, looking back with EHS as my new home.",
+    "I arrived at EHS with nerves and curiosity, unsure of what the year would bring.",
+    "I went on Burch; when I came back, I felt almost at home.",
+    "I got to know my roommate, friends, and teachers more.",
+    "I stopped feeling homesick, and started hanging out + having lots of fun.",
+    "I got onto the climbing team, looking forward to every single practice with my team.",
+    "I went on winter break, I was excited to come back to Episcopal.",
+    "I had lots of fun on the Ultimate team, making lots of new friends.",
+    "I finally felt like I found my place at Episcopal, with the support of everyone around me.",
+    "I crafted this final book, looking back with EHS as my new home.",
   ];
 
   // Use only the first 5 entries
