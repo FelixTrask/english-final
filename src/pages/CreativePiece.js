@@ -1,48 +1,68 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
-function CreativePiece() {
-  const container = useRef();
+const story = [
+  `Matthew White had never imagined himself moving to boarding school in the ninth grade. But then again, he also never imagined his mom actually making good on her threats, either.`,
+  `He recalled what she had said the previous time they had fought: <em>“One more of your antics,”</em> she growled, with eyes narrowed, <em>“and you’re out of my house!”</em>`,
+  `Matt had called her bluff every time, until last week. Something in her had clearly snapped, because she wasn’t backing down.`,
+  `Fast forward just seven days and Matthew was packing his treasured belongings into the back of a yellow taxi, and getting a good last look at his townhome just outside New York City. His destination? Lake Lanier, Georgia. Personally, Matt hadn’t even heard of the place.`,
+  `The trip down south was long, slow, and hot. Through train, bus, and yet another bus, a brisk New York spring day lazily melted into a sweltering, muggy southern night. Eventually, the bus dropped him off at the last stop, a long mile by foot from the school. Through the obnoxious buzzing of cicadas and the countless bugs crawling through the thick grass, Matt wondered if this was even the right place.`,
+  // add more paragraphs as needed
+];
 
-  useGSAP(() => {
-    // Fade in the whole background container
-    gsap.fromTo(
-      container.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1, ease: "power2.out" }
-    );
+export default function StoryScrollPin() {
+  const containerRef = useRef(null);
 
-    // Animate text
-    gsap.fromTo(
-      ".main-title",
-      { y: -40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
-    );
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: `+=${story.length * 150}vh`,
+        scrub: true,
+        pin: true,
+      },
+    });
 
-    gsap.fromTo(
-      ".text",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: "power3.out" }
-    );
-  }, { scope: container });
+    story.forEach((_, i) => {
+      const item = containerRef.current.querySelectorAll('.story-item')[i];
+      const text = item.querySelector('p');
+
+      tl.fromTo(
+        text,
+        { x: i % 2 === 0 ? -300 : 300, autoAlpha: 0 },
+        {
+          x: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+        `label${i}`
+      )
+      .to(
+        text,
+        { x: i % 2 === 0 ? 300 : -300, autoAlpha: 0, duration: 0.8, ease: 'power2.in' },
+        `label${i}+=0.8`
+      );
+      tl.addLabel(`label${i}`, i * 100);
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      gsap.globalTimeline.clear();
+    };
+  }, []);
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br from-green-100 to-white pt-12"
-      ref={container}
-    >
-      <div className="bg-white rounded-xl shadow-xl px-10 py-5 max-w-3xl mx-auto text-container text-pretty">
-        <h1 className="text-3xl font-bold mb-4 main-title">Creative Piece</h1>
-        <hr className="h-px my-5 bg-gray-300 border-0" />
-        <p className="text-gray-700 text">
-          example text
-        </p>
-      </div>
+    <div ref={containerRef} className="min-h-screen bg-black text-white px-6 py-20">
+      {story.map((text, idx) => (
+        <div key={idx} className="story-item absolute inset-0 flex items-center justify-center">
+          <p className="text-2xl max-w-2xl text-center" dangerouslySetInnerHTML={{ __html: text }}></p>
+        </div>
+      ))}
     </div>
   );
 }
-
-export default CreativePiece;
