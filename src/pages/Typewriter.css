@@ -1,0 +1,43 @@
+.glow-text {
+  color: #ffffff;
+  text-shadow:
+    0 0 2px #f87171,
+    0 0 5px #f87171,
+    0 0 10px #ef4444,
+    0 0 15px #dc2626,
+    0 0 20px #dc2626;
+}
+
+
+.typewriter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid rgb(255, 255, 255);
+
+  /* 👇 Adjust width to exact number of characters */
+  width: 18ch;
+  animation: typing 2.5s steps(22) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 18ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
