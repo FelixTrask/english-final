@@ -85,6 +85,9 @@ export default function StoryScrollPin() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsap.globalTimeline.clear();
+      tl.scrollTrigger?.kill();
+      tl.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
