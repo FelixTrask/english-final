@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar";
@@ -15,7 +14,7 @@ import GSAPtest from "./pages/GSAPtest";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/english-final">
       <Sidebar>
         <Routes>
           <Route path="/test" element={<GSAPtest />} />
